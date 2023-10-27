@@ -2,21 +2,7 @@
 import { useState } from 'react';
 import { useOutsideClick } from '@/hooks/useOutsideClick';
 import cn from 'classnames';
-
-export interface SelectOption {
-  value: string;
-  label: string;
-}
-
-export interface SelectProps {
-  label?: string;
-  placeholder?: string;
-  value: string | string[];
-  options: SelectOption[];
-  onChange: (value: string) => void;
-  className?: string;
-  multiple?: boolean;
-}
+import { SelectOption, SelectProps } from '@/shared/select/types';
 
 export default function Select({ label, placeholder, value, options, onChange, className, multiple }: SelectProps) {
   const [open, setOpen] = useState(false);
@@ -47,7 +33,10 @@ export default function Select({ label, placeholder, value, options, onChange, c
       )}
 
       <div className="relative" ref={selectRef as any}>
-        <div className="w-full max-w-[200px] overflow-hidden h-[40px] flex items-center px-3 border border-[#C2C9D8] rounded-[8px] text-[13px] cursor-pointer" onClick={toggle}>
+        <div
+          className="w-full max-w-[200px] overflow-hidden h-[40px] flex items-center px-3 border border-[#C2C9D8] rounded-[8px] text-[13px] cursor-pointer"
+          onClick={toggle}
+        >
           {inputLabel ? inputLabel : <span className="text-xs text-[#6F7383]">{placeholder}</span>}
         </div>
 
@@ -73,7 +62,10 @@ export default function Select({ label, placeholder, value, options, onChange, c
 
             {multiple && (
               <div className="sticky bottom-0 bg-white flex justify-center pt-3 pb-3 border-t">
-                <div className="bg-cyan-950 p-2 text-center text-white w-[70%] rounded-[8px] text-[14px] cursor-pointer" onClick={() => setOpen(false)}>
+                <div
+                  className="bg-cyan-950 p-2 text-center text-white w-[70%] rounded-[8px] text-[14px] cursor-pointer"
+                  onClick={() => setOpen(false)}
+                >
                   არჩევა
                 </div>
               </div>

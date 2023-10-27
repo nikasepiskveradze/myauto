@@ -1,21 +1,6 @@
-import { CompareIcon, EngineIcon, GeorgiaFlag, HeartIcon, PencilIcon, SpeedIcon, TransmissionIcon, WheelIcon } from '@/components/icons/Icons';
+import { CompareIcon, EngineIcon, GeorgiaFlag, HeartIcon, PencilIcon, SpeedIcon, TransmissionIcon, WheelIcon } from '@/shared/icons/Icons';
 import { formatPlainNumber } from '@/utils/number-formatters';
-
-interface CarItemProps {
-  car: {
-    id: number;
-    title: string;
-    year: number;
-    location: string;
-    engine: number;
-    transmission: string;
-    range: number;
-    wheel: number;
-    price: number;
-    seenCount: number;
-    lastSeen: string;
-  };
-}
+import { CarItemProps } from '@/components/carItem/types';
 
 export default function CarItem({ car }: CarItemProps) {
   return (

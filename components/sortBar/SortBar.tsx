@@ -1,8 +1,8 @@
 'use client';
-import Select from '@/components/select/Select';
 import { formatPlainNumber } from '@/utils/number-formatters';
+import Select from '@/shared/select/Select';
 
-export default function SortCars() {
+export default function SortBar() {
   return (
     <div className="flex justify-between items-center">
       <span className="text-xs text-[#272A37]">{formatPlainNumber(5467985)} განცხადება</span>

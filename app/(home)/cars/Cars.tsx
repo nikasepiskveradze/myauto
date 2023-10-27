@@ -1,5 +1,5 @@
-import SortCars from '@/app/(home)/cars/SortCars';
-import CarItem from '@/app/(home)/cars/CarItem';
+import CarItem from '@/components/carItem/CarItem';
+import SortBar from '@/components/sortBar/SortBar';
 
 export default function Cars() {
   const cars = [
@@ -72,7 +72,7 @@ export default function Cars() {
 
   return (
     <div className="ml-5 w-full mb-8">
-      <SortCars />
+      <SortBar />
       <div className="mt-4">{[cars.map((car) => <CarItem key={car.id} car={car} />)]}</div>
     </div>
   );
