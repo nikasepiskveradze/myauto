@@ -1,81 +1,57 @@
 'use client';
-import { CarIcon, MotoIcon, TractorIcon } from '@/shared/icons/Icons';
-import { ReactNode, useState } from 'react';
+import { useMemo } from 'react';
 import Select from '@/shared/select/Select';
 import { SelectOption } from '@/shared/select/types';
-import { getFillColor } from '@/app/(home)/filters/helpers';
+import { getVehicleTypes, saleTypeOptions } from '@/app/(home)/filters/helpers';
 import VehicleTabs from '@/components/vehicleTabs/VehicleTabs';
 import { VehicleType } from '@/components/vehicleTabs/types';
 import Switch from '@/shared/switch/Switch';
 import Input from '@/shared/input/Input';
 import Button from '@/shared/button/Button';
+import { FiltersProps } from '@/app/(home)/filters/types';
+import { useFilters } from '@/app/(home)/filters/useFilters';
+import { useGlobalState } from '@/context/GlobaState';
 
-export default function Filters() {
-  const [vehicleType, setVehicleType] = useState<VehicleType>(VehicleType.Car);
+export default function Filters({ manufacturers: manufacturersData, categories: categoriesData }: FiltersProps) {
+  const {
+    vehicleType,
+    saleType,
+    manufacturers,
+    categories,
+    startPrice,
+    endPrice,
+    changeVehicleType,
+    setSaleType,
+    selectManufacturer,
+    selectCategory,
+    setStartPrice,
+    setEndPrice,
+  } = useFilters();
+  const { currency, toggleCurrency } = useGlobalState();
 
-  const vehicleTypes: { type: VehicleType; icon: ReactNode }[] = [
-    {
-      type: VehicleType.Car,
-      icon: <CarIcon fill={getFillColor(VehicleType.Car, vehicleType)} />,
-    },
-    {
-      type: VehicleType.Tractor,
-      icon: <TractorIcon fill={getFillColor(VehicleType.Tractor, vehicleType)} />,
-    },
-    {
-      type: VehicleType.Moto,
-      icon: <MotoIcon fill={getFillColor(VehicleType.Moto, vehicleType)} />,
-    },
-  ];
+  const vehicleTypes = useMemo(() => getVehicleTypes(vehicleType), [vehicleType]);
 
-  const [saleType, setSaleType] = useState('1');
-  const saleTypeOptions: { value: string; label: string }[] = [
-    {
-      value: '1',
-      label: 'იყიდება',
-    },
-    {
-      value: '2',
-      label: 'ქირავდება',
-    },
-  ];
+  const manufacturerOptions: SelectOption[] = manufacturersData
+    .filter(
+      (item) =>
+        (VehicleType.Car === vehicleType && item.isCar === '1') ||
+        (VehicleType.Tractor === vehicleType && item.isSpec === '1') ||
+        (VehicleType.Moto === vehicleType && item.isMoto === '1'),
+    )
+    .map((item) => ({ value: item.manId, label: item.manName }));
 
-  const [manufacturers, setManufacturers] = useState<string[]>([]);
-  const manufacturerOptions: SelectOption[] = [
-    { value: '1', label: 'Mazda' },
-    { value: '2', label: 'Toyota' },
-    { value: '3', label: 'BMW' },
-    { value: '4', label: 'sdf' },
-    { value: '5', label: 'wer' },
-    { value: '6', label: 'ghg' },
-    { value: '7', label: 'bnb' },
-    { value: '8', label: 'uiu' },
-  ];
-
-  const [categories, setCategories] = useState<string[]>([]);
-  const categoryOptions: SelectOption[] = [
-    { value: '1', label: 'Jeep' },
-    { value: '2', label: 'SUV' },
-    { value: '3', label: 'Sedan' },
-    { value: '4', label: 'Hatchback' },
-    { value: '5', label: 'Mini' },
-  ];
-
-  const [currency, setCurrency] = useState(false);
-
-  const [startPrice, setStartPrice] = useState('');
-  const [endPrice, setEndPrice] = useState('');
+  const categoryOptions: SelectOption[] = categoriesData.map((item) => ({ value: item.categoryId, label: item.title }));
 
   return (
     <div className="min-w-[250px] border-2 border-[#E9E9F0] rounded-xl bg-white">
-      <VehicleTabs current={vehicleType} tabs={vehicleTypes} onChange={setVehicleType} />
+      <VehicleTabs current={vehicleType} tabs={vehicleTypes} onChange={changeVehicleType} />
 
       <div className="pt-[22px] px-6 pb-6 border-b">
         <Select
           label="გარიგების ტიპი"
           value={saleType}
           options={saleTypeOptions}
-          onChange={(value) => setSaleType(value)}
+          onChange={(value) => setSaleType(value as string)}
           className="mb-5"
         />
 
@@ -84,13 +60,7 @@ export default function Filters() {
           placeholder="ყველა მწარმოებელი"
           value={manufacturers}
           options={manufacturerOptions}
-          onChange={(value) => {
-            if (manufacturers.includes(value)) {
-              setManufacturers(manufacturers.filter((manufacturer) => manufacturer !== value));
-            } else {
-              setManufacturers([...manufacturers, value]);
-            }
-          }}
+          onChange={selectManufacturer}
           multiple
           className="mb-5"
         />
@@ -100,13 +70,7 @@ export default function Filters() {
           placeholder="ყველა კატეგორია"
           value={categories}
           options={categoryOptions}
-          onChange={(value) => {
-            if (categories.includes(value)) {
-              setCategories(categories.filter((category) => category !== value));
-            } else {
-              setCategories([...categories, value]);
-            }
-          }}
+          onChange={selectCategory}
           multiple
           className="mb-5"
         />
@@ -118,7 +82,7 @@ export default function Filters() {
 
           <div className="flex items-center">
             <span className="mr-1">₾</span>
-            <Switch checked={currency} onChange={() => setCurrency((currency) => !currency)} />
+            <Switch checked={currency} onChange={toggleCurrency!} />
             <span className="ml-1 text-[14px]">$</span>
           </div>
         </div>

@@ -12,7 +12,7 @@ export default function Select({ label, placeholder, value, options, onChange, c
 
   const singleLabel = options.find((option) => option.value === value)?.label;
   const multipleLabels = options
-    .filter((option) => value.includes(option.value))
+    .filter((option) => value.includes(option.value as never))
     .map((item) => item.label)
     .toString();
 
@@ -49,10 +49,10 @@ export default function Select({ label, placeholder, value, options, onChange, c
                 className={cn(
                   'py-2 px-4 cursor-pointer text-[#6F7383] text-[14px] first:rounded-tl-[7px] first:rounded-tr-[7px]',
                   {
-                    'bg-[#F2F3F6]': option.value === value || value.includes(option.value),
+                    'bg-[#F2F3F6]': option.value === value || value.includes(option.value as never),
                   },
                   {
-                    'text-[#272A37]': option.value === value || value.includes(option.value),
+                    'text-[#272A37]': option.value === value || value.includes(option.value as never),
                   },
                 )}
               >
