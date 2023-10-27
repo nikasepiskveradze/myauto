@@ -72,7 +72,7 @@ export default function Cars() {
 
   return (
     <div className="ml-5 w-full mb-8">
-      <SortBar />
+      <SortBar searchResultCount={34534538} />
       <div className="mt-4">{[cars.map((car) => <CarItem key={car.id} car={car} />)]}</div>
     </div>
   );

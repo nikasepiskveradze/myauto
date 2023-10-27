@@ -1,6 +1,6 @@
 import { CompareIcon, EngineIcon, GeorgiaFlag, HeartIcon, PencilIcon, SpeedIcon, TransmissionIcon, WheelIcon } from '@/shared/icons/Icons';
-import { formatPlainNumber } from '@/utils/number-formatters';
 import { CarItemProps } from '@/components/carItem/types';
+import { formatPlainNumber } from '@/utils/numberFormatters';
 
 export default function CarItem({ car }: CarItemProps) {
   return (

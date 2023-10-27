@@ -1,7 +1,7 @@
 import Filters from '@/app/(home)/filters/Filters';
 import Cars from '@/app/(home)/cars/Cars';
-import { fetchManufacturers } from '@/services/manufacturer/manufacturer.service';
-import { fetchCategories } from '@/services/category/category.service';
+import { fetchManufacturers } from '@/services/manufacturer/manufacturerService';
+import { fetchCategories } from '@/services/category/categoryService';
 
 export default async function Home() {
   const manufacturers = await fetchManufacturers();

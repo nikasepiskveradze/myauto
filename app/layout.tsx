@@ -8,7 +8,7 @@ import { GlobalStateProvider } from '@/context/GlobaState';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'My Auto',
+  title: 'ახალი და მეორადი ავტომობილები',
   description: 'See your car here',
 };
 
