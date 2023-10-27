@@ -13,10 +13,10 @@ export const periodOptions: SelectOption[] = [
 ];
 
 export const sortOptions: SelectOption[] = [
-  { value: 1, label: 'თარიღი კლებადი' },
-  { value: 2, label: 'თარიღი ზრდადი' },
-  { value: 3, label: 'ფასი კლებადი' },
-  { value: 4, label: 'ფასი ზრდადი' },
-  { value: 5, label: 'გარბენი კლებადი' },
-  { value: 6, label: 'გარბენი ზრდადი' },
+  { value: '1', label: 'თარიღი კლებადი' },
+  { value: '2', label: 'თარიღი ზრდადი' },
+  { value: '3', label: 'ფასი კლებადი' },
+  { value: '4', label: 'ფასი ზრდადი' },
+  { value: '5', label: 'გარბენი კლებადი' },
+  { value: '6', label: 'გარბენი ზრდადი' },
 ];

@@ -11,6 +11,7 @@ import Button from '@/shared/button/Button';
 import { FiltersProps } from '@/app/(home)/filters/types';
 import { useFilters } from '@/app/(home)/filters/useFilters';
 import { useGlobalState } from '@/context/GlobaState';
+import { useRouter } from 'next/navigation';
 
 export default function Filters({ manufacturers: manufacturersData, categories: categoriesData }: FiltersProps) {
   const {
@@ -28,6 +29,7 @@ export default function Filters({ manufacturers: manufacturersData, categories: 
     setEndPrice,
   } = useFilters();
   const { currency, toggleCurrency } = useGlobalState();
+  const router = useRouter();
 
   const vehicleTypes = useMemo(() => getVehicleTypes(vehicleType), [vehicleType]);
 
@@ -41,6 +43,17 @@ export default function Filters({ manufacturers: manufacturersData, categories: 
     .map((item) => ({ value: item.manId, label: item.manName }));
 
   const categoryOptions: SelectOption[] = categoriesData.map((item) => ({ value: item.categoryId, label: item.title }));
+
+  const clickSearch = () => {
+    const query = new URLSearchParams(window.location.search);
+    query.set('saleType', saleType);
+    query.set('manufacturers', manufacturers.join('-'));
+    query.set('categories', categories.join('.'));
+    query.set('startPrice', startPrice);
+    query.set('endPrice', endPrice);
+
+    router.push(`?${query.toString()}`);
+  };
 
   return (
     <div className="min-w-[250px] border-2 border-[#E9E9F0] rounded-xl bg-white">
@@ -95,7 +108,9 @@ export default function Filters({ manufacturers: manufacturersData, categories: 
       </div>
 
       <div className="px-6 h-[68px] flex justify-center items-center bg-white border-t rounded-bl-[10px] rounded-br-[10px]">
-        <Button className="bg-[#FD4100] text-white">ძებნა</Button>
+        <Button className="bg-[#FD4100] text-white" onClick={clickSearch}>
+          ძებნა
+        </Button>
       </div>
     </div>
   );

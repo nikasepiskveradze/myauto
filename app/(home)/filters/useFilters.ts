@@ -1,15 +1,18 @@
 import { useState } from 'react';
 import { VehicleType } from '@/components/vehicleTabs/types';
+import { useGetSearchQuery } from '@/hooks/useGetSearchQuery';
 
 export const useFilters = () => {
+  const query = useGetSearchQuery();
+
   const [vehicleType, setVehicleType] = useState<VehicleType>(VehicleType.Car);
-  const [saleType, setSaleType] = useState('0');
+  const [saleType, setSaleType] = useState(query.saleType);
 
-  const [manufacturers, setManufacturers] = useState<string[]>([]);
-  const [categories, setCategories] = useState<number[]>([]);
+  const [manufacturers, setManufacturers] = useState<string[]>(query.manufacturers);
+  const [categories, setCategories] = useState<number[]>(query.categories.map((item) => Number(item)));
 
-  const [startPrice, setStartPrice] = useState('');
-  const [endPrice, setEndPrice] = useState('');
+  const [startPrice, setStartPrice] = useState(query.startPrice);
+  const [endPrice, setEndPrice] = useState(query.endPrice);
 
   const changeVehicleType = (type: VehicleType) => {
     setVehicleType(type);
