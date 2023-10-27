@@ -18,15 +18,7 @@ export interface SelectProps {
   multiple?: boolean;
 }
 
-export default function Select({
-  label,
-  placeholder,
-  value,
-  options,
-  onChange,
-  className,
-  multiple,
-}: SelectProps) {
+export default function Select({ label, placeholder, value, options, onChange, className, multiple }: SelectProps) {
   const [open, setOpen] = useState(false);
 
   const toggle = () => setOpen((open) => !open);
@@ -55,15 +47,8 @@ export default function Select({
       )}
 
       <div className="relative" ref={selectRef as any}>
-        <div
-          className="w-full max-w-[200px] overflow-hidden h-[40px] flex items-center px-3 border border-[#C2C9D8] rounded-[8px] text-[13px] cursor-pointer"
-          onClick={toggle}
-        >
-          {inputLabel ? (
-            inputLabel
-          ) : (
-            <span className="text-xs text-[#6F7383]">{placeholder}</span>
-          )}
+        <div className="w-full max-w-[200px] overflow-hidden h-[40px] flex items-center px-3 border border-[#C2C9D8] rounded-[8px] text-[13px] cursor-pointer" onClick={toggle}>
+          {inputLabel ? inputLabel : <span className="text-xs text-[#6F7383]">{placeholder}</span>}
         </div>
 
         {open && (
@@ -75,12 +60,10 @@ export default function Select({
                 className={cn(
                   'py-2 px-4 cursor-pointer text-[#6F7383] text-[14px] first:rounded-tl-[7px] first:rounded-tr-[7px]',
                   {
-                    'bg-[#F2F3F6]':
-                      option.value === value || value.includes(option.value),
+                    'bg-[#F2F3F6]': option.value === value || value.includes(option.value),
                   },
                   {
-                    'text-[#272A37]':
-                      option.value === value || value.includes(option.value),
+                    'text-[#272A37]': option.value === value || value.includes(option.value),
                   },
                 )}
               >
@@ -90,10 +73,7 @@ export default function Select({
 
             {multiple && (
               <div className="sticky bottom-0 bg-white flex justify-center pt-3 pb-3 border-t">
-                <div
-                  className="bg-cyan-950 p-2 text-center text-white w-[70%] rounded-[8px] text-[14px] cursor-pointer"
-                  onClick={() => setOpen(false)}
-                >
+                <div className="bg-cyan-950 p-2 text-center text-white w-[70%] rounded-[8px] text-[14px] cursor-pointer" onClick={() => setOpen(false)}>
                   არჩევა
                 </div>
               </div>

@@ -157,7 +157,7 @@ export default function Filters() {
       </div>
 
       <div className="px-6 h-[68px] flex justify-center items-center bg-white border-t rounded-bl-[10px] rounded-br-[10px]">
-        <button className="bg-[#FD4100] p-2 w-full rounded-xl text-white">ძებნა</button>
+        <button className="bg-[#FD4100] p-2 w-full rounded-[8px] text-white">ძებნა</button>
       </div>
     </div>
   );
