@@ -2,6 +2,7 @@ export interface CarItemProps {
   car: {
     id: number;
     title: string;
+    photo: string;
     year: number;
     location: string;
     engine: number;
@@ -9,7 +10,7 @@ export interface CarItemProps {
     range: number;
     wheel: number;
     price: number;
-    seenCount: number;
-    lastSeen: string;
+    priceUsd: number;
+    views: number;
   };
 }

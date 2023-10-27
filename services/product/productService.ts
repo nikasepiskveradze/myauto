@@ -1,0 +1,32 @@
+import httpClient from '@/utils/axios';
+import { CarProducts, CarProductsResponse, Meta } from '@/services/product/types';
+
+export const fetchCarProducts = async (): Promise<CarProducts> => {
+  const cars: CarProductsResponse = await httpClient.get('/products');
+
+  return {
+    items: cars.data.items.map((item) => ({
+      carId: item.car_id,
+      photo: item.photo,
+      photoVer: item.photo_ver,
+      views: item.views,
+      dailyViews: {
+        views: item.daily_views?.views,
+        productId: item.daily_views?.product_id,
+      },
+      prodYear: item.prod_year,
+      price: item.price,
+      priceUsd: item.price_usd,
+      carRunKM: item.car_run_km,
+      engineVolume: item.engine_volume,
+      carModel: item.car_model,
+      manId: item.man_id,
+    })),
+    meta: {
+      total: cars.data.meta.total,
+      perPage: cars.data.meta.per_page,
+      currentPage: cars.data.meta.current_page,
+      lastPage: cars.data.meta.last_page,
+    },
+  };
+};
