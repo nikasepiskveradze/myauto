@@ -3,10 +3,6 @@ export interface CarProductResponse {
   photo: string;
   photo_ver: number;
   views: number;
-  daily_views: {
-    views: number;
-    product_id: number;
-  };
   prod_year: number;
   price: number;
   price_usd: number;
@@ -30,10 +26,6 @@ export interface CarProduct {
   photo: string;
   photoVer: number;
   views: number;
-  dailyViews: {
-    views: number;
-    productId: number;
-  };
   prodYear: number;
   price: number;
   priceUsd: number;
@@ -51,3 +43,13 @@ export interface Meta {
 }
 
 export type CarProducts = { items: CarProduct[]; meta: Meta };
+
+export type CarProductQuery = {
+  saleType: string;
+  manufacturers: string;
+  categories: string;
+  startPrice: string;
+  endPrice: string;
+  period: string;
+  sortOrder: string;
+};

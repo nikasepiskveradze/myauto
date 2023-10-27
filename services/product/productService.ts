@@ -1,8 +1,18 @@
 import httpClient from '@/utils/axios';
-import { CarProducts, CarProductsResponse, Meta } from '@/services/product/types';
+import { CarProductQuery, CarProducts, CarProductsResponse, Meta } from '@/services/product/types';
 
-export const fetchCarProducts = async (): Promise<CarProducts> => {
-  const cars: CarProductsResponse = await httpClient.get('/products');
+export const fetchCarProducts = async (query: CarProductQuery): Promise<CarProducts> => {
+  const cars: CarProductsResponse = await httpClient.get('/products', {
+    params: {
+      ForRent: query.saleType,
+      Mans: query.manufacturers,
+      Cats: query.categories,
+      PriceFrom: query.startPrice,
+      PriceTo: query.endPrice,
+      Period: query.period,
+      SortOrder: query.sortOrder,
+    },
+  });
 
   return {
     items: cars.data.items.map((item) => ({
@@ -10,10 +20,6 @@ export const fetchCarProducts = async (): Promise<CarProducts> => {
       photo: item.photo,
       photoVer: item.photo_ver,
       views: item.views,
-      dailyViews: {
-        views: item.daily_views?.views,
-        productId: item.daily_views?.product_id,
-      },
       prodYear: item.prod_year,
       price: item.price,
       priceUsd: item.price_usd,

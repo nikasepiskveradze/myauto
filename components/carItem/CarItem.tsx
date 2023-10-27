@@ -2,12 +2,13 @@ import { CompareIcon, EngineIcon, GeorgiaFlag, HeartIcon, PencilIcon, SpeedIcon,
 import { CarItemProps } from '@/components/carItem/types';
 import { formatPlainNumber } from '@/utils/numberFormatters';
 import PriceItem from '@/components/carItem/PriceItem';
+import Image from 'next/image';
 
 export default function CarItem({ car }: CarItemProps) {
   return (
     <div className="flex bg-white rounded-[8px] border border-[#E9E9F0] mb-[10px] last:mb-0 p-4">
       <div className="w-[182px] h-[144px] rounded-[8px] overflow-hidden">
-        <img src={car.photo} alt="" className="w-full h-full object-cover" />
+        <Image width={182} height={144} src={car.photo} alt="IMG" className="w-full h-full object-cover" />
       </div>
 
       <div className="ml-4 w-full flex flex-col justify-between">

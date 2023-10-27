@@ -1,3 +1,3 @@
-export const getCarPhoto = (photo: string, productId: number, photoVer: number) => {
-  return `https://static.my.ge/myauto/photos/${photo}/thumbs/${productId}_1.jpg?v=${photoVer}`;
+export const getCarPhoto = (photo: string, carId: number, photoVer: number) => {
+  return `https://static.my.ge/myauto/photos/${photo}/thumbs/${carId}_1.jpg?v=${photoVer}`;
 };

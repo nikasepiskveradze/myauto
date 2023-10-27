@@ -3,9 +3,10 @@ import SortBar from '@/components/sortBar/SortBar';
 import { fetchCarProducts } from '@/services/product/productService';
 import { fetchManufacturers } from '@/services/manufacturer/manufacturerService';
 import { getCarPhoto } from '@/app/(home)/cars/helpers';
+import { CarsProps } from '@/app/(home)/cars/types';
 
-export default async function Cars() {
-  const cars = await fetchCarProducts();
+export default async function Cars({ query }: CarsProps) {
+  const cars = await fetchCarProducts(query);
   const manufacturers = await fetchManufacturers();
 
   return (
@@ -19,7 +20,7 @@ export default async function Cars() {
               car={{
                 id: car.carId,
                 title: manufacturers.find((manItem) => manItem.manId === String(car.manId))?.manName!,
-                photo: getCarPhoto(car.photo, car.dailyViews.productId, car.photoVer),
+                photo: getCarPhoto(car.photo, car.carId, car.photoVer),
                 year: car.prodYear,
                 location: 'თბილისი',
                 engine: car.engineVolume,
