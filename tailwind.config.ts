@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss';
+import defaultTheme from 'tailwindcss/defaultTheme';
 
 const config: Config = {
   content: [
@@ -7,7 +8,14 @@ const config: Config = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
     './shared/**/*.{js,ts,jsx,tsx,mdx}',
   ],
-  theme: {},
+  theme: {
+    extend: {
+      screens: {
+        xs: '375px',
+        ...defaultTheme.screens,
+      },
+    },
+  },
   plugins: [],
 };
 export default config;

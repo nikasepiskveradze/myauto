@@ -56,7 +56,7 @@ export default function Filters({ manufacturers: manufacturersData, categories: 
   };
 
   return (
-    <div className="min-w-[250px] border-2 border-[#E9E9F0] rounded-xl bg-white">
+    <div className="min-w-[250px] border-2 border-[#E9E9F0] rounded-xl bg-white sm:block hidden">
       <VehicleTabs current={vehicleType} tabs={vehicleTypes} onChange={changeVehicleType} />
 
       <div className="pt-[22px] px-6 pb-6 border-b">

@@ -18,7 +18,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body className={`${inter.className} bg-[#F2F3F6]`}>
         <GlobalStateProvider>
           <Header />
-          <main className="container mx-auto">{children}</main>
+          <main className="sm:container mx-auto">{children}</main>
         </GlobalStateProvider>
       </body>
     </html>

@@ -1,16 +1,14 @@
 import CarItem from '@/components/carItem/CarItem';
 import SortBar from '@/components/sortBar/SortBar';
 import { fetchCarProducts } from '@/services/product/productService';
-import { fetchManufacturers } from '@/services/manufacturer/manufacturerService';
 import { getCarPhoto } from '@/app/(home)/cars/helpers';
 import { CarsProps } from '@/app/(home)/cars/types';
 
-export default async function Cars({ query }: CarsProps) {
+export default async function Cars({ query, manufacturers }: CarsProps) {
   const cars = await fetchCarProducts(query);
-  const manufacturers = await fetchManufacturers();
 
   return (
-    <div className="ml-5 w-full mb-8">
+    <div className="sm:ml-5 w-full mb-8">
       <SortBar searchResultCount={cars.meta.total} />
       <div className="mt-4">
         {[

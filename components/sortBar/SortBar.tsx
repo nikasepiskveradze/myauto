@@ -23,7 +23,7 @@ export default function SortBar({ searchResultCount }: SortBarProps) {
   };
 
   return (
-    <div className="flex justify-between items-center">
+    <div className="sm:flex justify-between items-center hidden">
       <span className="text-xs text-[#272A37]">{formatPlainNumber(searchResultCount)} განცხადება</span>
 
       <div className="flex items-center justify-between">

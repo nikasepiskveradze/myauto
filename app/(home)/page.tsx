@@ -11,7 +11,7 @@ export default async function Home({ searchParams }: HomeProps) {
   return (
     <div className="mt-8 flex justify-between items-start">
       <Filters manufacturers={manufacturers} categories={categories} />
-      <Cars query={searchParams} />
+      <Cars query={searchParams} manufacturers={manufacturers} />
     </div>
   );
 }
