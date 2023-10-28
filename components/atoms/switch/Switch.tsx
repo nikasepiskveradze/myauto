@@ -1,5 +1,5 @@
 'use client';
-import { SwitchProps } from '@/shared/switch/types';
+import { SwitchProps } from '@/components/atoms/switch/types';
 
 export default function Switch({ checked, onChange }: SwitchProps) {
   return (

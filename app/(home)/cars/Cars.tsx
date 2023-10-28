@@ -1,5 +1,5 @@
-import CarItem from '@/components/carItem/CarItem';
-import SortBar from '@/components/sortBar/SortBar';
+import CarItem from '@/components/organisms/carItem/CarItem';
+import SortBar from '@/components/molecules/sortBar/SortBar';
 import { fetchCarProducts } from '@/services/product/productService';
 import { getCarPhoto } from '@/app/(home)/cars/helpers';
 import { CarsProps } from '@/app/(home)/cars/types';

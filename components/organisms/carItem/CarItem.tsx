@@ -1,7 +1,16 @@
-import { CompareIcon, EngineIcon, GeorgiaFlag, HeartIcon, PencilIcon, SpeedIcon, TransmissionIcon, WheelIcon } from '@/shared/icons/Icons';
-import { CarItemProps } from '@/components/carItem/types';
-import { formatPlainNumber } from '@/utils/numberFormatters';
-import PriceItem from '@/components/carItem/PriceItem';
+import {
+  CompareIcon,
+  EngineIcon,
+  GeorgiaFlag,
+  HeartIcon,
+  PencilIcon,
+  SpeedIcon,
+  TransmissionIcon,
+  WheelIcon,
+} from '@/components/atoms/icons/Icons';
+import { CarItemProps } from '@/components/organisms/carItem/types';
+import { formatEngineVolume, formatPlainNumber } from '@/utils/numberFormatters';
+import PriceItem from '@/components/organisms/carItem/PriceItem';
 import Image from 'next/image';
 
 export default function CarItem({ car }: CarItemProps) {
@@ -31,7 +40,7 @@ export default function CarItem({ car }: CarItemProps) {
             <div>
               <div className="flex items-center mb-4">
                 <EngineIcon fill="#9CA2AA" />
-                <span className="text-[12px] text-[#1B1D25] ml-3">{car.engine}</span>
+                <span className="text-[12px] text-[#1B1D25] ml-3">{formatEngineVolume(car.engine)} ბენზინი</span>
               </div>
 
               <div className="flex items-center">
@@ -52,7 +61,7 @@ export default function CarItem({ car }: CarItemProps) {
             </div>
             <div>
               <div className="flex items-center mt-[-6px]">
-                <PriceItem price={car.price} priceUsd={car.priceUsd} />
+                <PriceItem price={car.price} priceUsd={car.priceUsd} className="flex items-center" />
               </div>
             </div>
           </div>

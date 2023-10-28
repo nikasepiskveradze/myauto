@@ -1,5 +1,5 @@
 'use client';
-import { InputProps } from '@/shared/input/types';
+import { InputProps } from '@/components/atoms/input/types';
 import cn from 'classnames';
 
 export default function Input({ type = 'text', className, onChange, ...rest }: InputProps) {

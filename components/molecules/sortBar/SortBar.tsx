@@ -1,8 +1,8 @@
 'use client';
-import Select from '@/shared/select/Select';
+import Select from '@/components/atoms/select/Select';
 import { formatPlainNumber } from '@/utils/numberFormatters';
-import { periodOptions, sortOptions } from '@/components/sortBar/helpers';
-import { SortBarProps } from '@/components/sortBar/type';
+import { periodOptions, sortOptions } from '@/components/molecules/sortBar/helpers';
+import { SortBarProps } from '@/components/molecules/sortBar/type';
 import { useRouter } from 'next/navigation';
 import { useGetSearchQuery } from '@/hooks/useGetSearchQuery';
 

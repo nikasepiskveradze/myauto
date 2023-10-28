@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { ButtonProps } from '@/shared/button/types';
+import { ButtonProps } from '@/components/atoms/button/types';
 
 export default function Button({ children, onClick, className }: ButtonProps) {
   return (

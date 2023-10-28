@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { VehicleTabsProps } from '@/components/vehicleTabs/types';
+import { VehicleTabsProps } from '@/components/molecules/vehicleTabs/types';
 
 export default function VehicleTabs({ current, tabs, onChange }: VehicleTabsProps) {
   return (

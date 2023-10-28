@@ -1,4 +1,4 @@
-import { SelectOption } from '@/shared/select/types';
+import { SelectOption } from '@/components/atoms/select/types';
 
 export const periodOptions: SelectOption[] = [
   { value: '1h', label: 'ბოლო 1 საათი' },

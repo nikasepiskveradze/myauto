@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { VehicleType } from '@/components/vehicleTabs/types';
+import { VehicleType } from '@/components/molecules/vehicleTabs/types';
 import { useGetSearchQuery } from '@/hooks/useGetSearchQuery';
 
 export const useFilters = () => {

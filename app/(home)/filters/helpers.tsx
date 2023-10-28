@@ -1,6 +1,6 @@
-import { VehicleType } from '@/components/vehicleTabs/types';
-import { SelectOption } from '@/shared/select/types';
-import { CarIcon, MotoIcon, TractorIcon } from '@/shared/icons/Icons';
+import { VehicleType } from '@/components/molecules/vehicleTabs/types';
+import { SelectOption } from '@/components/atoms/select/types';
+import { CarIcon, MotoIcon, TractorIcon } from '@/components/atoms/icons/Icons';
 import { ReactNode } from 'react';
 
 const getFillColor = (type: VehicleType, current: VehicleType) => {

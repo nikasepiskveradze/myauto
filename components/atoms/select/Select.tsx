@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useOutsideClick } from '@/hooks/useOutsideClick';
 import cn from 'classnames';
-import { SelectOption, SelectProps } from '@/shared/select/types';
+import { SelectOption, SelectProps } from '@/components/atoms/select/types';
 
 export default function Select({ label, placeholder, value, options, onChange, className, multiple }: SelectProps) {
   const [open, setOpen] = useState(false);
