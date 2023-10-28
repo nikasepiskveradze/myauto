@@ -2,7 +2,7 @@
 import Select from '@/components/atoms/select/Select';
 import { formatPlainNumber } from '@/utils/numberFormatters';
 import { periodOptions, sortOptions } from '@/components/molecules/sortBar/helpers';
-import { SortBarProps } from '@/components/molecules/sortBar/type';
+import { SortBarProps } from '@/components/molecules/sortBar/types';
 import { useRouter } from 'next/navigation';
 import { useGetSearchQuery } from '@/hooks/useGetSearchQuery';
 
