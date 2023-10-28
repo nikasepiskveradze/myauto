@@ -1,7 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['static.my.ge'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'static.my.ge',
+      },
+    ],
   },
 };
 

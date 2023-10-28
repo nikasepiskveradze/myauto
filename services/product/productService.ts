@@ -1,7 +1,8 @@
 import httpClient from '@/utils/axios';
 import { CarProductQuery, CarProducts, CarProductsResponse, Meta } from '@/services/product/types';
+import { cache } from 'react';
 
-export const fetchCarProducts = async (query: CarProductQuery): Promise<CarProducts> => {
+export const fetchCarProducts = cache(async (query: CarProductQuery): Promise<CarProducts> => {
   const cars: CarProductsResponse = await httpClient.get('/products', {
     params: {
       ForRent: query.saleType,
@@ -35,4 +36,4 @@ export const fetchCarProducts = async (query: CarProductQuery): Promise<CarProdu
       lastPage: cars.data.meta.last_page,
     },
   };
-};
+});
