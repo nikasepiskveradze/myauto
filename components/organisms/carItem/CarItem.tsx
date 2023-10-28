@@ -10,8 +10,8 @@ import {
 } from '@/components/atoms/icons/Icons';
 import { CarItemProps } from '@/components/organisms/carItem/types';
 import { formatEngineVolume, formatPlainNumber } from '@/utils/numberFormatters';
-import PriceItem from '@/components/organisms/carItem/PriceItem';
 import Image from 'next/image';
+import PriceItem from '@/components/molecules/priceItem/PriceItem';
 
 export default function CarItem({ car }: CarItemProps) {
   return (

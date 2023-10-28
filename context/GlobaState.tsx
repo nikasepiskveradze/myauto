@@ -2,20 +2,20 @@
 import { createContext, PropsWithChildren, useContext, useState } from 'react';
 
 interface GlobalStateType {
-  currency: boolean;
+  isUsd: boolean;
   toggleCurrency?: () => void;
 }
 
-const GlobalStateContext = createContext<GlobalStateType>({ currency: false });
+const GlobalStateContext = createContext<GlobalStateType>({ isUsd: false });
 
 export const GlobalStateProvider = ({ children }: PropsWithChildren) => {
-  const [currency, setCurrency] = useState(false);
+  const [isUsd, setIsUsd] = useState(false);
 
   const toggleCurrency = () => {
-    setCurrency((currency) => !currency);
+    setIsUsd((isUsd) => !isUsd);
   };
 
-  return <GlobalStateContext.Provider value={{ currency, toggleCurrency }}>{children}</GlobalStateContext.Provider>;
+  return <GlobalStateContext.Provider value={{ isUsd, toggleCurrency }}>{children}</GlobalStateContext.Provider>;
 };
 
 export const useGlobalState = () => {

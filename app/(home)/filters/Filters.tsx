@@ -28,7 +28,7 @@ export default function Filters({ manufacturers: manufacturersData, categories: 
     setStartPrice,
     setEndPrice,
   } = useFilters();
-  const { currency, toggleCurrency } = useGlobalState();
+  const { isUsd, toggleCurrency } = useGlobalState();
   const router = useRouter();
 
   const vehicleTypes = useMemo(() => getVehicleTypes(vehicleType), [vehicleType]);
@@ -95,7 +95,7 @@ export default function Filters({ manufacturers: manufacturersData, categories: 
 
           <div className="flex items-center">
             <span className="mr-1">₾</span>
-            <Switch checked={currency} onChange={toggleCurrency!} />
+            <Switch checked={isUsd} onChange={toggleCurrency!} />
             <span className="ml-1 text-[14px]">$</span>
           </div>
         </div>
